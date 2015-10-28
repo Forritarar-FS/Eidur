@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration {
+class Comments extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,6 +12,8 @@ class CreateCommentsTable extends Migration {
 	 */
 	public function up()
 	{
+		Schema::create('comments', function(Blueprint $table)
+		{
 		$table->increments('id');
 		$table->integer('user_id')->unsigned();
 		$table->integer('post_id')->unsigned();
@@ -25,6 +27,7 @@ class CreateCommentsTable extends Migration {
 					->references('id')
 					->on('users')
 					->onDelete('cascade');
+		});
 	}
 
 	/**
