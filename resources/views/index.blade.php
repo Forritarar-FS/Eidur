@@ -3,15 +3,19 @@
 <html style="overflow-y: scroll; overflow-x: hidden;">
 <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 <style>
-  .content {
-  text-align: center;
-  display: inline-block;
-  }
-  .title {
-  font-weight: 100;
-  font-family: 'Lato';
-  font-size: 36px;
-  }
+#gradient {
+    position:absolute;
+    z-index:2;
+    right:0; bottom:0; left:0;
+    height:200px; /* adjust it to your needs */
+    background: url(data:image/svg+xml;base64,alotofcodehere);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(70%,rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%);
+}
 </style>
 
 
@@ -30,7 +34,7 @@
                 <a style="font-weight: bold;" href="{{ action('PostsController@show', [$post->id]) }}">{{ $post->title }}</a>
               </h2>
             </div>
-            <div class="panel-body"><img class="img-responsive" src="{{ $post->fileToUpload }}"></div>
+            <div style="height: 650px; overflow: hidden;" class="panel-body"><a style="font-weight: bold;" href="{{ action('PostsController@show', [$post->id]) }}"><img class="img-responsive" src="{{ $post->fileToUpload }}"></a><div id="gradient"></div></div>
             <div class="panel-footer">
                 <p class="text-muted pull-right">Post created by: {{ $post->user->name }}</p>
                 <div class="clearfix">
