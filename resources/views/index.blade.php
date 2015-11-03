@@ -21,12 +21,12 @@
 
 
 <div class="row">
-  <h1 class="title col-md-offset-2" style="font-weight: bold;">Posts</h1>
+  <h1 class="title col-sm-offset-1" style="font-weight: bold;">Posts</h1>
   <div>
     <hr/>
     <div id="posts" class="row">
       <ul id="posts">
-        <div class="col-md-3 col-md-offset-2">
+        <div class="col-sm-11 col-lg-5 col-md-offset-1">
           @foreach ($posts as $post)
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -34,7 +34,7 @@
                 <a style="font-weight: bold;" href="{{ action('PostsController@show', [$post->id]) }}">{{ $post->title }}</a>
               </h2>
             </div>
-            <div style="height: 650px; overflow: hidden;" class="panel-body"><a style="font-weight: bold;" href="{{ action('PostsController@show', [$post->id]) }}"><img class="img-responsive" src="{{ $post->fileToUpload }}"></a><div id="gradient"></div></div>
+            <div style="hidden; overflow: hidden;" class="panel-body"><a style="font-weight: bold;" href="{{ action('PostsController@show', [$post->id]) }}"><img class="img-responsive" style="width: 100%" src="{{ $post->fileToUpload }}"></a></div>
             <div class="panel-footer">
                 <p class="text-muted pull-right">Post created by: {{ $post->user->name }}</p>
                 <div class="clearfix">
@@ -43,7 +43,7 @@
           </div>
           @endforeach
         </div>
-        <div class="col-md-offset-3 col-md-5 col-md-offset-1">
+        <div class="hidden-xs hidden-sm col-sm-offset-4 col-sm-4 col-sm-offset-1">
     			<button type="button" class="btn btn-default btn-lg btn-block">Trending</button>
     			<button type="button" class="btn btn-default btn-lg btn-block">Video</button>
     			<button type="button" class="btn btn-default btn-lg btn-block">GIF</button>

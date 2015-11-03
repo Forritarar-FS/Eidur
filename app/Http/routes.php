@@ -17,6 +17,7 @@ Route::post('upload', 'IndexController@upload');
 
 Route::get('create', 'IndexController@create');
 Route::get('posts/{id}', 'PostsController@show');
+Route::post('posts/{id}', 'PostsController@comment');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

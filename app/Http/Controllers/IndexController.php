@@ -2,6 +2,7 @@
 
 use App\Posts;
 use Auth;
+use App\Comments;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Request;
