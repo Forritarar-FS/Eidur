@@ -20,7 +20,7 @@ class IndexController extends Controller {
 	public function upload(Requests\CreatePostsRequest $request)
 	{
 			$target_dir = "uploads/";
-			$target_file = $target_dir . basename($_FILES['fileToUpload']["name"]);
+			$target_file = $target_dir . preg_replace("/[^A-Za-z0-9\_\-\.]/", '', basename($_FILES['fileToUpload']["name"]));
 			$uploadOk = 1;
 			$findme   = ".";
 			$pos = strpos($target_file, $findme);

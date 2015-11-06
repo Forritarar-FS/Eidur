@@ -18,12 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->integer('user_id')->unsigned();
 			$table->string('title');
 			$table->string('fileToUpload');
-			$table->integer('video')->default(0);
-			$table->integer('gif')->default(0);
-			$table->integer('cosplay')->default(0);
-			$table->integer('nsfw')->default(0);
-			$table->integer('wtf')->default(0);
-			$table->integer('technical')->default(0);
+			$table->string('tags');
 			$table->timestamps();
 			$table->foreign('user_id')
 						->references('id')

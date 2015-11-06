@@ -12,11 +12,59 @@ class PostsController extends Controller {
 
 	public function index()
 	{
-		$posts = Posts::latest()->simplePaginate(5);
+		$posts = Posts::latest()->index()->Paginate(30);
 		//return view('index', ['posts' => $posts]);
 
 		//$posts = Posts::latest()->get();
 		return view('index', compact('posts'));
+	}
+	public function video()
+	{
+		$posts = Posts::latest()->tags('video')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('video', compact('posts'));
+	}
+	public function gif()
+	{
+		$posts = Posts::latest()->tags('gif')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('gif', compact('posts'));
+	}
+	public function cosplay()
+	{
+		$posts = Posts::latest()->tags('cosplay')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('cosplay', compact('posts'));
+	}
+	public function nsfw()
+	{
+		$posts = Posts::latest()->tags('nsfw')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('nsfw', compact('posts'));
+	}
+	public function wtf()
+	{
+		$posts = Posts::latest()->tags('wtf')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('wtf', compact('posts'));
+	}
+	public function technical()
+	{
+		$posts = Posts::latest()->tags('technical')->Paginate(18);
+		//return view('index', ['posts' => $posts]);
+
+		//$posts = Posts::latest()->get();
+		return view('technical', compact('posts'));
 	}
 
 	public function show($id)

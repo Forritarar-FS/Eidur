@@ -1,15 +1,14 @@
-(function inf(){
-
+$(document).ready(function() {
     var loading_options = {
         finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
         msgText: "<div class='center'>Loading news items...</div>",
-        img: "/assets/img/ajax-loader.gif"
+        img: "ajax-loader.gif"
     };
 
-    $('#posts').infinitescroll({
-      loading : loading_options,
-      navSelector : "#posts .pagination",
-      nextSelector : "#posts .pagination",
-      itemSelector : "#items"
+    $('#content').infinitescroll({
+        loading: loading_options,
+        navSelector: "ul.pagination",
+        nextSelector: "ul.navigation a:first",
+        itemSelector: "#content div.item"
     });
-})();
+});
