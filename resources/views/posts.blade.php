@@ -38,7 +38,7 @@
             </div>
             <div class="media-body">
               <h4 class="meda-heading">{{ $comment->user->name }}</h4>
-              <p>{{ $comment->comment }}</p>
+              <p>{!! $comment->comment !!}</p>
             </div>
           </div>
           <hr>
@@ -47,26 +47,43 @@
   </div>
   <hr>
   @if(Auth::check())
+  @if ($errors->any())
+    <ul class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  @endif
   <div class="panel-footer">
     {!! Form::open() !!}
       <div class="from-group">
         {!! Form::label('comment', 'Write your comment: ') !!}
-        {!! Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '4']) !!}<br>
+        {!! Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '4', 'id' => 'editor1']) !!}<br>
         <!--<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>-->
         {!! Form::submit('Post Comment', ['class' => 'btn btn-default btn-lg btn-block', 'name' => 'submit']) !!}
       </div>
     {!! Form::close() !!}
   </div>
+  <script>
+    CKEDITOR.replace( 'editor1' );
+  </script>
   @else
+  @if ($errors->any())
+    <ul class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  @endif
   <div class="panel-footer">
-    {!! Form::open() !!}
+
       <div class="from-group">
         {!! Form::label('comment', 'Write your comment: ') !!}
-        {!! Form::textarea('comment', null, ['class' => 'form-control', 'id' => 'disabledInput', 'placeholder' => 'You need to be logged in to write a comment', 'rows' => '4']) !!}<br>
+        {!! Form::textarea('comment', null, ['class' => 'form-control disabled', 'placeholder' => 'You need to be logged in to write a comment', 'rows' => '4']) !!}<br>
         <!--<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>-->
         {!! Form::submit('You need to be logged in to post a comment', ['class' => 'btn btn-default btn-lg btn-block disabled', 'name' => 'submit']) !!}
       </div>
-    {!! Form::close() !!}
+
   </div>
   @endif
   <hr>

@@ -75,7 +75,7 @@ class PostsController extends Controller {
 		return view('posts', compact('post', 'comments'));
 	}
 
-	public function comment($post)
+	public function comment(Requests\CreateCommentsRequest $request, $post)
 	{
 		$posts = Posts::whereId($post)->first();
 
@@ -87,4 +87,14 @@ class PostsController extends Controller {
 
 		return redirect('posts/' . $post);
 	}
+	public function isLikedByMe($id)
+	{
+	    $post = Posts::findOrFail($id)->first();
+	    if (Like::whereUserId(Auth::id())->wherePostId($post->id)->exists()){
+	        return 'true';
+	    }
+	    return 'false';
+	}
+
+
 }

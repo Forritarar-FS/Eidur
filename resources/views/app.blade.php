@@ -6,8 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TopKek</title>
 
-	<link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/dark/bootstrap.css') }}" rel="stylesheet" title="dark">
+	<link href="{{ asset('/css/dark/bootstrap.min.css') }}" rel="stylesheet" title="dark">
+	<link href="{{ asset('/css/light/bootstrap.css') }}" rel="stylesheet" title="light">
+	<link href="{{ asset('/css/light/bootstrap.min.css') }}" rel="stylesheet" title="light">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -21,8 +23,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script src='js/jquery.infinitescroll.min.js'></script>
+	<script src='js/themes.js'></script>
 	<script src='js/infinitescroll.js'></script>
-
+	<script src="/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -52,13 +55,28 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Swap Themes<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" onclick="setActiveStyleSheet('dark'); return false;"><img src="../../pictures/dark.png" width="27" height="26" alt="Dark Style Button" /><p style="display: inline;"> Dark Theme</p></a></li>
+								<li><a href="#" onclick="setActiveStyleSheet('light'); return false;"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme</p></a></li>
+							</ul>
+						</li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Swap Themes<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" onclick="setActiveStyleSheet('dark'); return false;"><img src="../../pictures/dark.png" width="27" height="26" alt="Dark Style Button" /><p style="display: inline;"> Dark Theme</p></a></li>
+								<li><a href="#" onclick="setActiveStyleSheet('light'); return false;"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme</p></a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								<li><a href="{{ url('#') }}">Edit Profile</a></li>
 							</ul>
 						</li>
 					@endif

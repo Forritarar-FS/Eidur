@@ -39,10 +39,10 @@
 
 <h1 class="container" style="font-weight: bold; color: white; margin-top: 65px;">Posts</h1>
 <hr/>
-    <div class="container jumbotron" style="padding-top: 20px;">
+    <div class="container jumbotron">
       @foreach ($posts as $post)
         <a href="{{ action('PostsController@show', [$post->id]) }}">
-          <span class="col-md-2 col-sm-3 col-xs-6" style="overflow: hidden;">
+          <span class="col-md-2 col-sm-3 col-xs-6" style="margin-left: -15px; margin-right: 15px; overflow: hidden; margin-bottom: 15px;">
               <img src="{{ $post->fileToUpload }}" id="img">
           </span>
       </a>
