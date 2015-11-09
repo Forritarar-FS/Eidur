@@ -13,10 +13,20 @@
 
 Route::get('index', 'IndexController@indextwo');
 Route::get('/', 'PostsController@index');
+Route::get('video', 'PostsController@video');
+Route::get('gif', 'PostsController@gif');
+Route::get('cosplay', 'PostsController@cosplay');
+Route::get('nsfw', 'PostsController@nsfw');
+Route::get('wtf', 'PostsController@wtf');
+Route::get('technical', 'PostsController@technical');
 Route::post('upload', 'IndexController@upload');
 
 Route::get('create', 'IndexController@create');
 Route::get('posts/{id}', 'PostsController@show');
+Route::post('posts/{id}', 'PostsController@comment');
+
+Route::get('posts/{id}/islikedbyme', 'PostsController@isLikedByMe');
+Route::post('posts/like', 'PostsController@like');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

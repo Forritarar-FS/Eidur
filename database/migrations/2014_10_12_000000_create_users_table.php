@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->string('country');
 			$table->string('funnylevel');
+			$table->integer('rep')->default(0);
 			$table->rememberToken();
 			$table->timestamps();
 		});

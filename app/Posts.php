@@ -8,6 +8,7 @@ class Posts extends Model {
 			'id',
 			'title',
 			'fileToUpload',
+			'tags',
 			'created_by'
 		];
 
@@ -20,4 +21,24 @@ class Posts extends Model {
 		{
 			return $this->belongsTo('App\User');
 		}
+		public function comments()
+		{
+			return $this->hasMany('App\Comments');
+		}
+		public function scopeTags($query, $tags)
+		{
+			$query->where('tags', '=', $tags);
+		}
+		public function scopeIndex($query)
+		{
+			$query->where('tags', '!=', 'nsfw');
+		}
+		public function scopeTakeRandom($query, $size=1)
+		{
+    return $query->orderBy(Posts::raw('RAND()'))->take($size);
+	}
+	public function likes()
+	{
+    return $this->belongsToMany('App\User', 'likes');
+	}
 }
