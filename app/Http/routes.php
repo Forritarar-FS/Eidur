@@ -19,14 +19,17 @@ Route::get('cosplay', 'PostsController@cosplay');
 Route::get('nsfw', 'PostsController@nsfw');
 Route::get('wtf', 'PostsController@wtf');
 Route::get('technical', 'PostsController@technical');
+
 Route::post('upload', 'IndexController@upload');
 
 Route::get('create', 'IndexController@create');
 Route::get('posts/{id}', 'PostsController@show');
-Route::post('posts/{id}', 'PostsController@comment');
+Route::post('posts/{id}', 'PostsController@comments');
 
 Route::get('posts/{id}/islikedbyme', 'PostsController@isLikedByMe');
-Route::post('posts/like', 'PostsController@like');
+Route::get('posts/like/{id}', 'PostsController@like');
+Route::get('posts/{id}/isdislikedbyme', 'PostsController@isDisLikedByMe');
+Route::get('posts/dislike/{id}', 'PostsController@dislike');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

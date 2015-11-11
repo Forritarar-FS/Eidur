@@ -35,10 +35,10 @@ class Posts extends Model {
 		}
 		public function scopeTakeRandom($query, $size=1)
 		{
-    return $query->orderBy(Posts::raw('RAND()'))->take($size);
-	}
-	public function likes()
-	{
-    return $this->belongsToMany('App\User', 'likes');
-	}
+    	return $query->orderBy(Posts::raw('RAND()'))->take($size);
+		}
+		public function likes()
+		{
+		  return $this->belongsToMany('App\User', 'likes');
+		}
 }

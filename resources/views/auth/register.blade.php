@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('content')
-<br><br><br>
+<div style="margin-top: 100px;"></div>
+<hr>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">

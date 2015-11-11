@@ -49,8 +49,9 @@
     			  </div>
 					  <div class="from-group">
 						  {!! Form::label('body', 'Select image to upload: ') !!}
-						  {!! Form::input('file', 'fileToUpload', null, ['style' => 'overflow: hidden;', 'class' => 'btn btn-default btn-lg btn-block', 'id' => 'fileToUpload']) !!}<br>
+						  {!! Form::input('file', 'fileToUpload', null, ['style' => 'overflow: hidden;', 'class' => 'btn btn-default btn-lg btn-block']) !!}<br>
 							{!! Form::select('tags', [
+							null => ' -- Select a Tag -- ',
 							'video' => 'Video',
 							'gif' => 'GIF',
 							'cosplay' => 'Cosplay',

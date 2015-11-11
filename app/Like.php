@@ -7,7 +7,8 @@ class Like extends Model {
 	protected $fillable = [
 			'id',
 			'post_id',
-			'user_id'
+			'user_id',
+			'points'
 		];
 
 }
