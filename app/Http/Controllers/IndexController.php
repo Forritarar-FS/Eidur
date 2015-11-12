@@ -49,7 +49,7 @@ class IndexController extends Controller {
 			$filecheck++;
 						$uploadOk = 1;
 	}
-		if ($_FILES["fileToUpload"]["size"] > 500000000*8) {
+		if ($_FILES["fileToUpload"]["size"] > 200 * 1000 * 1000) {
 					echo "Sorry, your file is too large.";
 					$uploadOk = 0;
 	}

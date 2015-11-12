@@ -207,7 +207,7 @@ public function isLikedByMe($id)
 public function like($id)
 {
     // Get the Post
-    $post = Posts::findOrFail($id)->first();
+    $post = Posts::whereId($id)->first();
     // If the user already like this post, we delete the like
     $existing_like = Like::wherePostsId($post->id)->whereUserId(Auth::id())->first();
     if (!is_null($existing_like)) {
@@ -237,7 +237,7 @@ public function like($id)
 public function dislike($id)
 {
     // Get the Post
-    $post = Posts::findOrFail($id)->first();
+    $post = Posts::whereId($id)->first();
     // If the user already like this post, we delete the like
     $existing_dislike = Like::wherePostsId($post->id)->whereUserId(Auth::id())->first();
     if (!is_null($existing_dislike)) {
