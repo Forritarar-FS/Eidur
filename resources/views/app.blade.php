@@ -4,6 +4,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="pictures/fb.png"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:locale" content="en_GB"/>
+	<meta property="og:url" content="http://suchdank.com/"/>
+	<meta property="og:description" content="TheDankWeb - Your daily Dank memes. Join today!"/>
+	<meta property="og:site_name" content="TheDankWeb"/>
+	<meta property="og:title" content="TheDankWeb - Your daily Dank memes. Join today!"/>
+	<meta property="fb:app_id" content="1621725061412866"/>
 	<title>TheDankWeb</title>
 
 	<link href="{{ asset('/css/dark/bootstrap.css') }}" rel="stylesheet" title="dark">
@@ -22,16 +30,26 @@
 	<![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<script src='js/jquery.infinitescroll.min.js'></script>
-	<script src='js/themes.js'></script>
-	<script src='js/infinitescroll.js'></script>
+	<script src="{{ asset('js/jquery.infinitescroll.min.js') }}"></script>
+	<script src="{{ asset('js/themes.js') }}"></script>
+	<script src="{{ asset('js/infinitescroll.js') }}"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="{{ asset('js/gifffer.min.js') }}"></script>
+	<script>
+	  window.onload = function() {
+	    Gifffer();
+	  }
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" d<script>
+				  window.onload = function() {
+				    Gifffer();
+				  }
+				</script>="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

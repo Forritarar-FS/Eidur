@@ -4,71 +4,27 @@
   body {
     background-color: #1F1C18;
   }
-  #fade {
-    display: none;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    z-index:1001;
-    -moz-opacity: 0.7;
-    opacity:.70;
-    filter: alpha(opacity=70);
-  }
-  #light {
-    display: none;
-    position: absolute;
-  	left: 50%;
-  	top: 50%;
-    border: 2px solid #1F1C18;
-    background: #1F1C18;
-    z-index:1002;
-    overflow:visible;
-  }
 </style>
-<script>
-  window.document.onkeydown = function (e)
-  {
-      if (!e){
-          e = event;
-      }
-      if (e.keyCode == 27){
-          lightbox_close();
-      }
-  }
-
-  function lightbox_open(){
-    window.scrollTo(0,0);
-    document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block';
-  }
-
-  function lightbox_close(){
-    document.getElementById('light').style.display='none';
-    document.getElementById('fade').style.display='none';
-  }
-</script>
 <hr>
 <div style="margin-top: 50px;" class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2 class="panel-title title">
+        <h4 style="position: relatives; margin-top: 0em;" class="text-muted pull-right">{{ $postPoints }} Points</h4>
         <a style="font-weight: bold;">{{ $post->title }}</a>
       </h2>
     </div>
 
-    <div class="panel-body"><img class="img-responsive" style="margin-left: auto; margin-right: auto;" src="../{{ $post->fileToUpload }}"></div>
+    <div class="panel-body" style="text-align: center;">
+      <img class="img-responsive" data-gifffer="../{{ $post->fileToUpload }}" style="margin-left: auto; margin-right: auto;">
+    </div>
     <div class="panel-footer">
       @if (Auth::check())
       <a href="{{ url('/posts/like', $post->id) }}"><span style="font-size: 35px; color: green;" class="pull-left glyphicon glyphicon-ok" aria-hidden="true"></span></a>
       <a href="{{ url('/posts/dislike', $post->id) }}"><span style="font-size: 35px; margin-left: 15px; color: red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      <h4 style="margin-top: 5px; display: inline;">{{ $postPoints }}</h4>
       @else
       <a href="{{ url('#') }}"><span style="font-size: 35px; color: green;" class="pull-left glyphicon glyphicon-ok" aria-hidden="true"></span></a>
       <a href="{{ url('#') }}"><span style="font-size: 35px; margin-left: 15px; color: red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      <h4 style="display: inline;">{{ $postPoints }}</h4>
       @endif
         <p class="text-muted pull-right">Post created by: {{ $post->user->name }}</p>
         <div class="clearfix">
@@ -96,7 +52,6 @@
               <!--<img style="max-height: 180px; min-height: 50px;" src="../uploads/images/comments/{{ $comment->fileToUpload }}" onclick="lightbox_open();">
               <div id="light"><img src="uploads/images/comments/{{ $comment->fileToUpload }}"></div>
               <div id="fade" onClick="lightbox_close();"></div>-->
-              <center>{!! $posts->render(); !!}</center>
             </div>
           </div>
           <hr>

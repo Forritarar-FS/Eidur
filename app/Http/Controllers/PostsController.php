@@ -19,7 +19,7 @@ class PostsController extends Controller {
 		//return view('index', ['posts' => $posts]);
 
 		//$posts = Posts::latest()->get();
-		return view('index', compact('posts'));
+		return view('index', compact('posts', 'image'));
 	}
 	public function video()
 	{
