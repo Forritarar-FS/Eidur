@@ -83,42 +83,9 @@ class PostsController extends Controller {
 		return view('posts', compact('post', 'comments', 'postPoints'));
 	}
 
-	public function comment(Requests\CreateCommentsRequest $request, $post)
-{
 
-		$posts = Posts::whereId($post)->first();
-		if(Input::file())
-		{
-				 $image = Input::file('fileToUpload');
-				 $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-				 $path = public_path('uploads/images/comments/' . $filename);
-
-
-					Image::make($image->getRealPath())->resize(180, 180)->save($path);
-					$comment = new Comments(Request::all());
-					$comment->published_at = Carbon::now();
-					$comment->fileToUpload = $filename;
-					$comment->user()->associate(Auth::user());
-					$comment->posts()->associate($posts);
-					$comment->save();
-
-					return redirect('posts/' . $post);
-				} else {
-					$posts = Posts::whereId($post)->first();
-					$comment = new Comments(Request::all());
-					$comment->published_at = Carbon::now();
-					$comment->user()->associate(Auth::user());
-					$comment->posts()->associate($posts);
-					$comment->save();
-
-					return redirect('posts/' . $post);
-				}
-}
-
-
-public function comments(Requests\CreateCommentsRequest $request, $post)
-{
+	public function comments(Requests\CreateCommentsRequest $request, $post)
+	{
     $posts = Posts::whereId($post)->first();
 
     $target_dir = "uploads/images/comments/";
@@ -195,14 +162,14 @@ public function comments(Requests\CreateCommentsRequest $request, $post)
     return redirect('posts/' . $post);
 }
 
-public function isLikedByMe($id)
-{
-    $post = Posts::findOrFail($id)->first();
-    if (Like::whereUserId(Auth::id())->wherePostId($post->id)->exists()){
-        return 'true';
-    }
-    return 'false';
-}
+	public function isLikedByMe($id)
+	{
+	  $post = Posts::findOrFail($id)->first();
+	  if (Like::whereUserId(Auth::id())->wherePostId($post->id)->exists()){
+	      return 'true';
+	  }
+	  return 'false';
+	}
 
 public function like($id)
 {

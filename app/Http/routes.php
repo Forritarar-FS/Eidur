@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('index', 'IndexController@indextwo');
+Route::get('profile/edit', 'ProfileController@edit');
+Route::get('profile', 'ProfileController@index');
+Route::get('profile/password', 'ProfileController@password');
 Route::get('/', 'PostsController@index');
 Route::get('video', 'PostsController@video');
 Route::get('gif', 'PostsController@gif');

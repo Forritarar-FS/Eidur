@@ -1,10 +1,5 @@
 @extends('app')
 @section('content')
-<style>
-  body {
-    background-color: #1F1C18;
-  }
-</style>
 <hr>
 <div style="margin-top: 50px;" class="container">
   <div class="panel panel-default">
@@ -15,8 +10,8 @@
       </h2>
     </div>
 
-    <div class="panel-body" style="text-align: center;">
-      <img class="img-responsive" data-gifffer="../{{ $post->fileToUpload }}" style="margin-left: auto; margin-right: auto;">
+    <div class="panel-body">
+      <img class="img-responsive" src="../{{ $post->fileToUpload }}" style="margin-top: -15px;margin-bottom: -15px;margin-left: auto; margin-right: auto;">
     </div>
     <div class="panel-footer">
       @if (Auth::check())
@@ -31,18 +26,17 @@
         </div>
     </div>
   </div>
-  <hr>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title title"></h2>
-          <a data-toggle="collapse" href="#collapse1"><button type="button" class="btn btn-default btn-block">Show/Hide Comments</button></a>
+      <h2 class="panel-title title" style="background-color: #011;"></h2>
+          <a data-toggle="collapse" href="#collapse1"><button type="button" style="background-color: #011;" class="btn btn-default btn-block">Show/Hide Comments</button></a>
       <div id="collapse1" class="panel-collapse collapse">
 
         @foreach ($comments as $comment)
           <div class="media">
             <div class="media-left">
               <a href="#">
-                {!! Html::image('pictures/avatar.png', 'Placeholder Avatar', ['class' => 'media-object']) !!}
+                <img class="media-object" src="../{{ $comment->user->avatar }}">
               </a>
             </div>
             <div class="media-body">
@@ -54,7 +48,6 @@
               <div id="fade" onClick="lightbox_close();"></div>-->
             </div>
           </div>
-          <hr>
         @endforeach
     </div>
   </div>
