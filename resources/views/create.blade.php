@@ -49,8 +49,9 @@
     			  </div>
 					  <div class="from-group">
 						  {!! Form::label('body', 'Select image to upload: ') !!}
-						  {!! Form::input('file', 'fileToUpload', null, ['style' => 'overflow: hidden;', 'class' => 'btn btn-default btn-lg btn-block', 'id' => 'fileToUpload']) !!}<br>
+						  {!! Form::input('file', 'fileToUpload', null, ['style' => 'overflow: hidden;', 'class' => 'btn btn-default btn-lg btn-block']) !!}<br>
 							{!! Form::select('tags', [
+							null => ' -- Select a Tag -- ',
 							'video' => 'Video',
 							'gif' => 'GIF',
 							'cosplay' => 'Cosplay',
@@ -60,7 +61,7 @@
 							'other' => 'Other'
 							], null, ['class' => 'form-control']) !!}
 							<br>
-							<!--<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>-->
+							<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>
 						  {!! Form::submit('Upload Image', ['class' => 'btn btn-default btn-lg btn-block', 'name' => 'submit', 'accept' => 'image/gif']) !!}
 					  </div>
 				  {!! Form::close() !!}
@@ -71,7 +72,7 @@
 </div>
 <footer class="footer">
 	<div class="container">
-		<p class="text-muted text-center">Max Image Size: 50MB</p>
+		<p class="text-muted text-center">Max Image Size: 200MB</p>
 	</div>
 </footer>
 @else

@@ -22,7 +22,7 @@ class CreateCommentsRequest extends Request {
 	public function rules()
 	{
 		return [
-			'comment' => 'required|min:6',
+			'comment' => 'required|min:6'
 		];
 	}
 

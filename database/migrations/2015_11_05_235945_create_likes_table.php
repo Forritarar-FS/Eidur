@@ -10,17 +10,18 @@ class CreateLikesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('likes', function(Blueprint $table)
-    {
-        $table->increments('id');
-        $table->integer('post_id')->unsigned();
-        $table->integer('user_id')->unsigned();
-        $table->softDeletes();
-        $table->timestamps();
-    });
-	}
+	 public function up()
+	 {
+	     Schema::create('likes', function(Blueprint $table)
+	     {
+	         $table->increments('id');
+	         $table->integer('posts_id');
+	         $table->integer('user_id');
+	         $table->integer('points');
+	         $table->softDeletes();
+	         $table->timestamps();
+	     });
+	 }
 
 	/**
 	 * Reverse the migrations.

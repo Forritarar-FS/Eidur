@@ -23,7 +23,8 @@ class CreatePostsRequest extends Request {
 	{
 		return [
 			'title' => 'required|min:6',
-			'fileToUpload' => 'required'
+			'fileToUpload' => 'required',
+			'tags' => 'required'
 		];
 	}
 
