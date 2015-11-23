@@ -14,10 +14,8 @@
 	<meta property="fb:app_id" content="1621725061412866"/>
 	<title>SuchDank</title>
 
-	<link href="{{ asset('/css/dark/bootstrap.css') }}" rel="stylesheet" title="dark">
-	<link href="{{ asset('/css/dark/bootstrap.min.css') }}" rel="stylesheet" title="dark">
-	<link href="{{ asset('/css/light/bootstrap.css') }}" rel="stylesheet" title="light">
-	<link href="{{ asset('/css/light/bootstrap.min.css') }}" rel="stylesheet" title="light">
+	<link href="{{ asset('/css/dark/theme.css') }}" rel="stylesheet" title="dark">
+	<link href="{{ asset('/css/light/theme.css') }}" rel="stylesheet" title="light">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -28,38 +26,33 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<script src="{{ asset('js/jquery.infinitescroll.min.js') }}"></script>
-	<script src="{{ asset('js/themes.js') }}"></script>
-	<script src="{{ asset('js/infinitescroll.js') }}"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="{{ asset('js/gifffer.min.js') }}"></script>
-	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1621725061412866',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
+	<script type="text/javascript" src="{{ asset('js/themes.js') }}"></script>
+	<style type="text/css">
+		::-webkit-scrollbar {
+			position: static;
+	    width: 15px;
+			background-color: #000;
+	}
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+	::-webkit-scrollbar-track {
+	    -webkit-box-shadow: outset 0 0 6px #110;
+	    border-radius: 10px;
+	}
 
-	  window.onload = function() {
-	    Gifffer();
-	  }
-	</script>
+	::-webkit-scrollbar-thumb {
+	    border-radius: 10px;
+			background-color: #505050;
+	    -webkit-box-shadow: inset 0 0 6px #011;
+	}
+
+</style>
 </head>
-<body style="background-color: #262626;">
+<body>
 	<nav class="navbar navbar-default navbar-fixed-top device-fixed-heigh">
-		<div style="background-color: #011;" class="container-fluid">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -89,7 +82,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Swap Themes<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" onclick="setActiveStyleSheet('dark'); return false;"><img src="../../pictures/dark.png" width="27" height="26" alt="Dark Style Button" /><p style="display: inline;"> Dark Theme</p></a></li>
-								<li><a href="#"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme (Unsupported At the moment!)</p></a></li>
+								<li><a href="#" onclick="setActiveStyleSheet('light'); return false;"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme</p></a></li>
 							</ul>
 						</li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
@@ -99,15 +92,17 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Swap Themes<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" onclick="setActiveStyleSheet('dark'); return false;"><img src="../../pictures/dark.png" width="27" height="26" alt="Dark Style Button" /><p style="display: inline;"> Dark Theme</p></a></li>
-								<li><a href="#"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme (Unsupported At the moment!)</p></a></li>
+								<li><a href="#" onclick="setActiveStyleSheet('light'); return false;"><img src="../../pictures/light.png" width="27" height="26" alt="Light Style Button" /><p style="display: inline;"> Light Theme</p></a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								@if (!Auth::guest())
 								<li><a href="{{ url('/profile') }}">My Profile</a></li>
 								<li><a href="{{ url('/profile/edit') }}">Edit Profile</a></li>
+								@endif
 							</ul>
 						</li>
 					@endif
@@ -120,5 +115,35 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script language="javascript" type="text/javascript">
+	(function($) {
+	    var element = $('.follow-scroll');
+	    console.log(element[0])
+	    var originalY = element.offset().top;
+
+	    // Space between element and top of screen (when scrolling)
+	    var topMargin = 80;
+
+	    // Should probably be set in CSS; but here just for emphasis
+	    element.css('position', 'relative');
+
+	    $(window).on('scroll', function(event) {
+	        var scrollTop = $(window).scrollTop();
+
+	        element.stop(false, false).animate({
+	            top: scrollTop < originalY
+	                    ? 0
+	                    : scrollTop - originalY + topMargin
+	        }, 300);
+	    });
+	})(jQuery);
+	  window.onload = function() {
+	    Gifffer();
+	  }
+		function submitForm(btn) {
+			btn.disabled = true;
+			btn.form.submit();
+		}
+	</script>
 </body>
 </html>

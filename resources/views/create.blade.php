@@ -62,7 +62,7 @@
 							], null, ['class' => 'form-control']) !!}
 							<br>
 							<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>
-						  {!! Form::submit('Upload Image', ['class' => 'btn btn-default btn-lg btn-block', 'name' => 'submit', 'accept' => 'image/gif']) !!}
+						  {!! Form::submit('Upload Image', ['class' => 'btn btn-default btn-lg btn-block', 'accept' => 'image/gif', 'onclick' => 'submitForm(this)']) !!}
 					  </div>
 				  {!! Form::close() !!}
 				</div>
