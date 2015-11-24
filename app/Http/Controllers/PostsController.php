@@ -15,7 +15,7 @@ class PostsController extends Controller {
 
 	public function index()
 	{
-		$posts = Posts::latest()->index()->Paginate(30);
+		$posts = Posts::latest()->index()->Paginate(120);
 		//return view('index', ['posts' => $posts]);
 
 		//$posts = Posts::latest()->get();

@@ -28,26 +28,22 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title title" style="background-color: #011;"></h2>
-          <a data-toggle="collapse" href="#collapse1"><button type="button" style="background-color: #011;" class="btn btn-default btn-block">Show/Hide Comments</button></a>
+      <h2 class="panel-title title"></h2>
+          <a data-toggle="collapse" href="#collapse1"><button type="button" class="btn btn-default btn-block">Show/Hide Comments</button></a>
       <div id="collapse1" class="panel-collapse collapse">
 
         @foreach ($comments as $comment)
-          <div class="media">
-            <div class="media-left">
+        <div class="well">
               <a href="#">
-                <img class="media-object" src="../{{ $comment->user->avatar }}">
+                <img align="left" style="height: 64px; width: 64px;"src="../{{ $comment->user->avatar }}">
               </a>
-            </div>
-            <div class="media-body">
-              <h4 class="meda-heading">{{ $comment->user->name }}</h4>
-              <p>{!! $comment->comment !!}</p>
+              <p style="font-weight: bold; font-size: 16px;">{{ $comment->user->name }}</p>
+              {!! $comment->comment !!}
               {!! Html::image($comment->fileToUpload, null, ['style' => 'max-height: 180px;']) !!}
               <!--<img style="max-height: 180px; min-height: 50px;" src="../uploads/images/comments/{{ $comment->fileToUpload }}" onclick="lightbox_open();">
               <div id="light"><img src="uploads/images/comments/{{ $comment->fileToUpload }}"></div>
               <div id="fade" onClick="lightbox_close();"></div>-->
-            </div>
-          </div>
+        </div>
         @endforeach
     </div>
   </div>
@@ -66,8 +62,8 @@
         {!! Form::label('comment', 'Write your comment: ') !!}
         {!! Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '4', 'id' => 'editor1']) !!}<br>
         <!--<center><div class="g-recaptcha" data-sitekey="6Le8Yw8TAAAAALIYa_UEYSwrIrAwk5TlBXr9Ziyf"></div></center><br>-->
-        {!! Form::input('file', 'fileToUpload', null, ['style' => 'overflow: hidden;', 'class' => 'btn btn-default btn-lg btn-block']) !!}
-        {!! Form::submit('Post Comment', ['class' => 'btn btn-default btn-lg btn-block', 'name' => 'submit']) !!}
+        {!! Form::input('file', 'fileToUpload', null, ['class' => 'btn btn-default btn-lg btn-block']) !!}
+        {!! Form::submit('Post Comment', ['class' => 'btn btn-default btn-lg btn-block', 'onclick' => 'submitForm(this)']) !!}
       </div>
     {!! Form::close() !!}
   </div>
