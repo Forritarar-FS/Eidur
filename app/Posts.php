@@ -25,6 +25,10 @@ class Posts extends Model {
 		{
 			return $this->hasMany('App\Comments');
 		}
+		public function children()
+		{
+			return $this->hasMany('App\ChildrenComment');
+		}
 		public function scopeTags($query, $tags)
 		{
 			$query->where('tags', '=', $tags);

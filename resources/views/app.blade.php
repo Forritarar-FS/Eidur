@@ -116,7 +116,10 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script language="javascript" type="text/javascript">
-	(function($) {
+	$('#myModal').on('shown.bs.modal', function () {
+	  $('#myInput').focus()
+	})
+	/*(function($) {
 	    var element = $('.follow-scroll');
 	    console.log(element[0])
 	    var originalY = element.offset().top;
@@ -136,7 +139,7 @@
 	                    : scrollTop - originalY + topMargin
 	        }, 300);
 	    });
-	})(jQuery);
+	})(jQuery);*/
 	  window.onload = function() {
 	    Gifffer();
 	  }
@@ -144,6 +147,13 @@
 			btn.disabled = true;
 			btn.form.submit();
 		}
+		$('#childComment').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget)
+			var url = button.data('url')
+			console.log(button)
+			var modal = $(this)
+			modal.find('.modal-content form').attr('action', url)
+		})
 	</script>
 </body>
 </html>

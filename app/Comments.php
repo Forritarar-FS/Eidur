@@ -14,7 +14,7 @@ class Comments extends Model {
 
 		public function setPublishedAtAttribute($date)
 		{
-			$this->attributes['pubslished_at'] = Carbon::parse($date);
+			$this->attributes['published_at'] = Carbon::parse($date);
 		}
 
 		public function user()
@@ -24,5 +24,9 @@ class Comments extends Model {
 		public function posts()
 		{
 			return $this->belongsTo('App\Posts');
+		}
+		public function children()
+		{
+			return $this->hasMany('App\ChildrenComment');
 		}
 }

@@ -23,6 +23,8 @@ Route::get('profile/avatar', 'ProfileController@avatar');
 Route::post('profile/avatar', 'ProfileController@editAvatar');
 Route::get('profile/name', 'ProfileController@name');
 Route::post('profile/name', 'ProfileController@editName');
+Route::get('profile/country', 'ProfileController@country');
+Route::post('profile/country', 'ProfileController@editCountry');
 
 //Index View
 Route::get('/', 'PostsController@index');
@@ -37,10 +39,11 @@ Route::get('technical', 'PostsController@technical');
 Route::post('upload', 'IndexController@upload');
 Route::post('uploadProfile', 'ProfileController@editProfilePicture');
 
-//Create Posts/Comments
+//Create Posts/Comments/ChildrenComment
 Route::get('create', 'IndexController@create');
 Route::get('posts/{id}', 'PostsController@show');
 Route::post('posts/{id}', 'PostsController@comments');
+Route::post('posts/reply/{id}', 'PostsController@commentsReply');
 
 //Up/Down votes
 Route::get('posts/{id}/islikedbyme', 'PostsController@isLikedByMe');

@@ -4,8 +4,9 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"type": "project",
-	"guzzlehttp/guzzle": "~5.0",
 	"require": {
+		"guzzlehttp/guzzle": "~5.0",
+		"baum/baum": "~1.1",
 		"laravel/framework": "5.0.*",
 		"illuminate/html": "^5.0",
 		"intervention/image": "^2.3"

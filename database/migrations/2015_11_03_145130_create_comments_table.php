@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration {
 			$table->integer('posts_id')->unsigned();
 			$table->text('comment');
 			$table->string('fileToUpload')->default("uploads/images/comments/NFF4D00-0.png");
-			$table->timestamp('pubslished_at');
+			$table->timestamp('published_at');
 			$table->timestamps();
 			$table->foreign('user_id')
 						->references('id')
